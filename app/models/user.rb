@@ -5,11 +5,13 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_many :topics, dependent: :destroy
+  has_many :campushares, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :delete_all
   has_many :likes, dependent: :delete_all
 
   has_many :like_topics, through: :likes, source: :likeable, source_type: 'Topic'
+  has_many :like_campushares, through: :likes, source: :likeable, source_type: 'Campushare'
   has_many :like_comments, through: :likes, source: :likeable, source_type: 'Comment'
 
   has_many :attachments, dependent: :delete_all

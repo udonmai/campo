@@ -1,9 +1,10 @@
 class TopicsController < ApplicationController
-  before_action :login_required, :no_locked_required, except: [:index, :show, :search]
+  before_action :login_required, :no_locked_required
   before_action :find_topic, only: [:edit, :update, :trash]
 
   def index
     @topics = Topic.includes(:user, :category).page(params[:page])
+    print @topic
 
     if params[:category_id]
       @category = Category.where('lower(slug) = ?', params[:category_id].downcase).first!
@@ -59,14 +60,14 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = current_user.topics.create topic_params
+    @topic = current_user.topics.create campushare_params
   end
 
   def edit
   end
 
   def update
-    @topic.update_attributes topic_params
+    @topic.update_attributes campushare_params
   end
 
   def trash
@@ -78,6 +79,10 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title, :category_id, :body)
+  end
+
+  def campushare_params
+    params.require(:campushare).permit(:title, :category_id, :body)
   end
 
   def find_topic

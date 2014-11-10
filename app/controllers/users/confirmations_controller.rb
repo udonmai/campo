@@ -18,6 +18,8 @@ class Users::ConfirmationsController < ApplicationController
   end
 
   def create
+    print 'udonmailskdjfl;kasldflk;asdfj;lasdfj'
+    print current_user.name
     UserMailer.confirmation(current_user.id).deliver
   end
 

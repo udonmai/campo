@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  include Resque::Mailer
+  #include Resque::Mailer
 
   helper :markdown
 
@@ -13,6 +13,8 @@ class UserMailer < ActionMailer::Base
   def confirmation(user_id)
     @user = User.find(user_id)
     I18n.locale = @user.locale
+    print 'udonmaiudonmaiudonmaiduonmai!!!!!!!!!!##############$$$$$$$$$$$$$$$$$\n'
+    print @user.email
     mail(to: @user.email,
          subject: I18n.t('user_mailer.confirmation.subject'))
   end

@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -58,6 +59,45 @@ CREATE SEQUENCE attachments_id_seq
 --
 
 ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
+
+
+--
+-- Name: campushares; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE campushares (
+    id integer NOT NULL,
+    user_id integer,
+    category_id integer,
+    title character varying(255),
+    body text,
+    hot double precision DEFAULT 0.0,
+    comments_count integer DEFAULT 0,
+    likes_count integer DEFAULT 0,
+    subscriptions_count integer DEFAULT 0,
+    trashed boolean DEFAULT false,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: campushares_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE campushares_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: campushares_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE campushares_id_seq OWNED BY campushares.id;
 
 
 --
@@ -334,6 +374,13 @@ ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY campushares ALTER COLUMN id SET DEFAULT nextval('campushares_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
 
 
@@ -385,6 +432,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY attachments
     ADD CONSTRAINT attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: campushares_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY campushares
+    ADD CONSTRAINT campushares_pkey PRIMARY KEY (id);
 
 
 --
@@ -448,6 +503,27 @@ ALTER TABLE ONLY users
 --
 
 CREATE INDEX index_attachments_on_user_id ON attachments USING btree (user_id);
+
+
+--
+-- Name: index_campushares_on_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_campushares_on_category_id ON campushares USING btree (category_id);
+
+
+--
+-- Name: index_campushares_on_hot; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_campushares_on_hot ON campushares USING btree (hot);
+
+
+--
+-- Name: index_campushares_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_campushares_on_user_id ON campushares USING btree (user_id);
 
 
 --
@@ -584,4 +660,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140405074043');
 INSERT INTO schema_migrations (version) VALUES ('20140412065000');
 
 INSERT INTO schema_migrations (version) VALUES ('20140412113810');
+
+INSERT INTO schema_migrations (version) VALUES ('20141110085032');
 

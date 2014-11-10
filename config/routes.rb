@@ -50,6 +50,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :campushares, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
+    collection do
+      get 'categoried/:category_id', to: 'topics#index', as: :categoried
+      get 'search'
+    end
+
+    member do
+      delete :trash
+    end
+  end
+
   resources :comments, only: [:edit, :update], concerns: [:likeable] do
     member do
       get :cancel
@@ -70,6 +81,11 @@ Rails.application.routes.draw do
 
   scope path: '~:username', module: 'users', as: 'user' do
     resources :topics, only: [:index] do
+      collection do
+        get :likes
+      end
+    end
+    resources :campuses, only: [:index] do
       collection do
         get :likes
       end

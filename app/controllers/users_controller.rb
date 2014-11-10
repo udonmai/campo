@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new params.require(:user).permit(:username, :email, :name, :password).merge(locale: locale)
     if @user.save
-      login_as @user
       UserMailer.confirmation(@user.id).deliver
       redirect_back_or_default root_url
     else
