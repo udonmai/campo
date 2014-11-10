@@ -8,3 +8,4 @@ cp config/secrets.example.yml config/secrets.yml
 cp config/config.example.yml config/config.yml
 bundle install --path .bundle
 bundle exec rake db:create:all db:setup
+bundle exec QUEUE=* rake environment resque:work

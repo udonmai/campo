@@ -3,7 +3,43 @@
 .main
   .container
     .row
-      .col-md-9
+      .col-md-2.left-nav
+        .panel
+          - if login?
+            .panel-body
+              img.img-circle.img-avatar src=current_user.avatar.normal.url
+              '
+              = current_user.name
+              '
+            .panel-body
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=user_root_path(username: current_user.username)
+                  = t '.profile'
+              .list-group.list-group-campo.recordable.divider
+              .list-group.list-group-campo.recordable
+                = t '.likes'
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=likes_user_topics_path(username: current_user.username)
+                  = t '.topics'
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=likes_user_comments_path(username: current_user.username)
+                  = t '.comments'
+              .list-group.list-group-campo.recordable.divider
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=settings_account_path
+                  = t '.settings'
+              .list-group.list-group-campo.recordable.divider
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=logout_path data-method="delete"
+                  = t '.logout'
+          - else
+            li
+              a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                = t '.sign_up'
+            li
+              a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                = t '.sign_in'
+      .col-md-10
         .panel
           .panel-heading
             h3.panel-title = t '.new_topic'

@@ -13,7 +13,7 @@ default: &default
       #password:
       #authentication:
     default_options:
-      from: no-reply@example.com
+      from: no-reply@exchanger.com
     default_url_options:
       host: localhost:3000
 

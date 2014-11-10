@@ -3,9 +3,17 @@ body {
 }
 
 .navbar {
-  background: white;
+  //background: white;
   border-bottom: none;
   margin-bottom: 0;
+
+  #navbar {
+    background: white;
+  }
+  
+  .navbar-brand {
+    margin-left: 0 !important;
+  }
 
   &.navbar-inverse {
     background: #222;
@@ -138,6 +146,10 @@ body {
       margin: 0;
     }
   }
+}
+
+.left-nav {
+  padding-right: 0 !important;
 }
 
 .sub-navbar {

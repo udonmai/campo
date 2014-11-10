@@ -1,13 +1,13 @@
 .main
   .container
     .row
-      .col-md-6.col-md-offset-3
-        .panel
-          .panel-heading
-            h3.panel-title
-              = t '.sign_up'
-          .panel-body
-            = form_for @user, html: { id: 'new-user-form' } do |f|
+      = form_for @user, html: { id: 'new-user-form' } do |f|
+        .col-md-4.col-md-offset-2
+          .panel
+            .panel-heading
+              h3.panel-title
+                = t '.sign_up'
+            .panel-body
               = render 'share/form_error_messages', form: f
               .form-group
                 = f.label :name, class: 'control-label'
@@ -15,6 +15,7 @@
               .form-group
                 = f.label :email, class: 'control-label'
                 = f.text_field :email, placeholder: t('.your_email'), tabindex: 2, class: 'form-control'
+              p 「*kyoto-u.ac.jp」required
               .form-group
                 = f.label :username, class: 'control-label'
                 = f.text_field :username, placeholder: t('.pick_a_username'), tabindex: 3, class: 'form-control'
@@ -22,6 +23,15 @@
                 = f.label :password, class: 'control-label'
                 = f.password_field :password, placeholder: t('.choose_a_password'), tabindex: 4, class: 'form-control'
               = f.submit t('.create_account'), class: 'btn btn-success', tabindex: 5
+        .col-md-4
+          .panel
+            .panel-heading
+              h3.panel-title 条項
+            .panel-body
+              | barbara
+            .panel-body
+              .form-group
+                = check_box_tag tabindex: 6
 
 javascript:
   $('#new-user-form').validate({
@@ -31,7 +41,7 @@ javascript:
       },
       'user[email]': {
         required: true,
-        format: /^([^@\s]+)@((?:[a-z0-9-]+\.)+[a-z]{2,})$/i,
+        format: /^([^@\s]+)@((?:[a-z0-9-]+\.)*kyoto-u.ac.jp)$/i,
         remote: '/users/check_email'
       },
       'user[username]': {
