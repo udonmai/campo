@@ -133,6 +133,17 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :campushares, only: [:index, :show, :update] do
+      collection do
+        get :trashed
+      end
+
+      member do
+        delete :trash
+        patch :restore
+      end
+    end
+
     resources :comments, only: [:index, :show, :update] do
       collection do
         get :trashed

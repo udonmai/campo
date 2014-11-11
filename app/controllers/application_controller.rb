@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :login?, :current_user
 
-  before_action :set_locale
+  before_action :set_locale, :email_confirmed_required
 
   private
 
@@ -18,8 +18,10 @@ class ApplicationController < ActionController::Base
   end
 
   def email_confirmed_required
-    if !current_user.confirmed?
-      redirect_to new_users_confirmation_path(return_to: (request.fullpath if request.get?))
+    if login? and !current_user.confirmed?
+      #redirect_to new_users_confirmation_path(return_to: (request.fullpath if request.get?))
+      logout
+      redirect_to login_path(return_to: (request.fullpath if request.get?))
     end
   end
 

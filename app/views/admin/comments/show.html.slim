@@ -26,7 +26,7 @@
                 = f.label :created_at
                 = f.text_field :created_at, class: 'form-control', disabled: true
               .clearfix
-                = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 2
+                = f.submit t('.save_changes'), class: 'btn btn-success', disabled: true, tabIndex: 2
                 .pull-right
                   - if @comment.trashed?
                     a.btn.btn-default href=restore_admin_comment_path(@comment) data-method="patch"
