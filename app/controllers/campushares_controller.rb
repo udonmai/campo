@@ -1,10 +1,12 @@
-class TopicsController < ApplicationController
+class CampusharesController < ApplicationController
   before_action :login_required, :no_locked_required
   before_action :find_topic, only: [:edit, :update, :trash]
 
+  helper_method :admin_required
+
   def index
-    @topics = Topic.includes(:user, :category).page(params[:page])
-    print @topic
+    @topics = Campushare.includes(:user, :category).page(params[:page])
+    print @topics
 
     if params[:category_id]
       @category = Category.where('lower(slug) = ?', params[:category_id].downcase).first!
@@ -25,7 +27,7 @@ class TopicsController < ApplicationController
   end
 
   def search
-    @topics = Topic.search(
+    @topics = Campushare.search(
       query: {
         multi_match: {
           query: params[:q].to_s,
@@ -41,7 +43,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find params[:id]
+    @topic = Campushare.find params[:id]
 
     if params[:comment_id] and comment = @topic.comments.find_by(id: params.delete(:comment_id))
       params[:page] = comment.page
@@ -56,23 +58,23 @@ class TopicsController < ApplicationController
 
   def new
     @category = Category.where('lower(slug) = ?', params[:category_id].downcase).first if params[:category_id].present?
-    @topic = Topic.new category: @category
+    @topic = Campushare.new category: @category
   end
 
   def create
-    @topic = current_user.topics.create topic_params
+    @topic = current_user.campushares.create campushare_params
   end
 
   def edit
   end
 
   def update
-    @topic.update_attributes topic_params
+    @topic.update_attributes campushare_params
   end
 
   def trash
     @topic.trash
-    redirect_via_turbolinks_to topics_path
+    redirect_via_turbolinks_to campushares_path
   end
 
   private
@@ -86,6 +88,10 @@ class TopicsController < ApplicationController
   end
 
   def find_topic
-    @topic = current_user.topics.find params[:id]
+    @topic = current_user.campushares.find params[:id]
+  end
+
+  def admin_required
+    current_user.admin?
   end
 end

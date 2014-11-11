@@ -6,6 +6,7 @@ class CreateCategories < ActiveRecord::Migration
       t.string :slug_lower
       t.text :description
       t.integer :topics_count, default: 0
+      t.integer :campushares_count, default: 0
 
       t.timestamps
     end

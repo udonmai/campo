@@ -7,6 +7,7 @@ zh-CN:
         name: "名称"
         slug: "标识"
         topics_count: "话题数"
+        campushares_count: "话题数"
       comment:
         commentable: "评论对象"
         created_at: "创建于"
@@ -159,6 +160,7 @@ zh-CN:
     en: "英文"
     zh-CN: "简体中文"
     zh-TW: "正体中文"
+    ja-JP: "日语"
   markdown:
     area:
       attach_images_by: "添加图片"
@@ -329,7 +331,7 @@ zh-CN:
       sign_up: "注册"
       to_comment: "后发表评论"
       your_account_had_been_locked: "你的帐号已被锁定"
-    topic:
+    campushare:
       comments_count: "%{count} 条评论"  
   user_mailer:
     confirmation:

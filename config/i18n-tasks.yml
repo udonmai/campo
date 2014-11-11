@@ -1,5 +1,5 @@
-base_locale: en
-locales: [en, zh-CN]
+base_locale: ja-JP
+locales: [en, zh-CN, ja-JP]
 
 search:
   include:

@@ -1,0 +1,16 @@
+- cache [campushare, locale] do
+  a.list-group-item.topic href=campushare_last_path(campushare)
+    .list-group-item-avatar
+      img.img-rounded alt="avatar" src=campushare.user.avatar.normal.url
+    .list-group-item-content
+      .list-group-item-heading
+        b = campushare.title
+      .text-muted
+        = campushare.user.name
+        = ' · '
+        = time_ago_tag campushare.created_at
+        - if campushare.category
+          = ' · '
+          = campushare.category.name
+        = ' · '
+        = t '.comments_count', count: campushare.comments_count

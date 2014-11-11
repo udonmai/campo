@@ -108,8 +108,10 @@ CREATE TABLE categories (
     id integer NOT NULL,
     name character varying(255),
     slug character varying(255),
+    slug_lower character varying(255),
     description text,
     topics_count integer DEFAULT 0,
+    campushares_count integer DEFAULT 0,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -527,10 +529,17 @@ CREATE INDEX index_campushares_on_user_id ON campushares USING btree (user_id);
 
 
 --
--- Name: index_categories_on_lowercase_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_categories_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_categories_on_lowercase_slug ON categories USING btree (lower((slug)::text));
+CREATE UNIQUE INDEX index_categories_on_slug ON categories USING btree (slug);
+
+
+--
+-- Name: index_categories_on_slug_lower; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_categories_on_slug_lower ON categories USING btree (slug_lower);
 
 
 --
@@ -662,4 +671,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140412065000');
 INSERT INTO schema_migrations (version) VALUES ('20140412113810');
 
 INSERT INTO schema_migrations (version) VALUES ('20141110085032');
+
+INSERT INTO schema_migrations (version) VALUES ('20141110086034');
 

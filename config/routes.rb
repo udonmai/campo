@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 
   resources :campushares, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
     collection do
-      get 'categoried/:category_id', to: 'topics#index', as: :categoried
+      get 'categoried/:category_id', to: 'campushares#index', as: :categoried
       get 'search'
     end
 
@@ -85,7 +85,7 @@ Rails.application.routes.draw do
         get :likes
       end
     end
-    resources :campuses, only: [:index] do
+    resources :campushares, only: [:index] do
       collection do
         get :likes
       end

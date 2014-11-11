@@ -4,12 +4,16 @@ module CommentsHelper
     case comment.commentable
     when Topic
       topic_path(comment.commentable, comment_id: comment.id, anchor: "comment-#{comment.id}", only_path: options[:only_path])
+    when Campushare
+      campushare_path(comment.commentable, comment_id: comment.id, anchor: "comment-#{comment.id}", only_path: options[:only_path])
     end
   end
 
   def comment_title(comment)
     case comment.commentable
     when Topic
+      comment.commentable.title
+    when Campushare
       comment.commentable.title
     else
       t 'helpers.comments.deleted_entry'
@@ -20,6 +24,8 @@ module CommentsHelper
     case comment.commentable
     when Topic
       topic_last_path(@comment.commentable)
-    end
+    when Campushare
+      campushare_last_path(@comment.commentable)
+    end  
   end
 end

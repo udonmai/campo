@@ -140,6 +140,7 @@ zh-TW:
     en: "英文"
     zh-CN: "簡體中文"
     zh-TW: "正體中文"
+    ja-JP: "日本語"
   markdown:
     area:
       attach_images_by: "添加圖片"

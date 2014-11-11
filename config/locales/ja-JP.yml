@@ -1,0 +1,350 @@
+---
+ja-JP:
+  activerecord:
+    attributes:
+      category:
+        description: "説明"
+        name: "名前"
+        slug: "マック"
+        topics_count: "話題数"
+      comment:
+        commentable: "コメント対象"
+        created_at: "作成場所"
+        user: "ユーザ"
+      topic:
+        comments_count: "話題数"
+        created_at: "作成場所"
+        user: "ユーザ"
+      user:
+        avatar: "アベター"
+        bio: "紹介"
+        created_at: "作成場所"
+        email: "Eメール"
+        locale: "言語"
+        name: "名前"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        username: "ユーザ名"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              format: "無効なメールフォーマット"
+            username:
+              format: "アルファベット、数字とーは可能で、冒頭のーは不可" 
+  admin:
+    attachments:
+      index:
+        attachments: "添付ファイル"
+        delete_confirm: "添付ファイルを削除する？"
+    categories:
+      flashes:
+        successfully_created: "カテゴリーを作成できた"
+        successfully_destroy: "カテゴリーを削除できた"
+        successfully_updated: "カテゴリーを更新できた"
+      form:
+        create_category: "カテゴリーを作成する"
+        permanently_delete: "完全に削除する"
+        permanently_delete_confirm: "カテゴリーを完全に削除する？"
+        save_changes: "変更を保存した"
+      index:
+        categories: "カテゴリー"
+        new_category: "新規カテゴリー"
+        topics_count: "話題数"
+      new:
+        new_category: "新規カテゴリー"
+    comments:
+      flashes:
+        successfully_restored: "コメントを復元できた"
+        successfully_trashed: "コメントを削除できた"
+        successfully_updated: "コメントを更新できた"
+      index:
+        comments: "コメント"
+        normal: "正常"
+        trashed: "ゴミ箱"
+      show:
+        comments: "コメント"
+        delete: "削除"
+        delete_confirm: "コメントを削除する？"
+        restore: "復元"
+        save_changes: "変更を保存する"
+    dashboard:
+      show:
+        dashboard: "ダッシュボード"
+    topics:
+      flashes:
+        successfully_restored: "話題を復元できた"
+        successfully_trashed: "話題を削除できた"
+        successfully_updated: "話題を更新できた"
+      index:
+        normal: "正常"
+        topics: "話題"
+        trashed: "ゴミ箱"
+      show:
+        delete: "削除"
+        delete_confirm: "話題を削除する？"
+        no_category: "カテゴリーなし"
+        restore: "復元"
+        save_changes: "変更を保存する"
+    users:
+      flashes:
+        successfully_destroy: "ユーザを削除できた"
+        successfully_locked: "ユーザをロックできた"
+        successfully_unlocked: "ユーザをアンロックできた"
+        successfully_updated: "ユーザを更新できた"
+      index:
+        locked: "ロックされた"
+        normal: "正常"
+        users: "ユーザ"
+      show:
+        confirmed: "メール確認した"
+        lock: "ロックされた"
+        permanently_delete: "完全に削除する"
+        permanently_delete_confirm: "ユーザを完全に削除する？"
+        remove_avatar: "アベターを取り外し"
+        save_changes: "変更を保存する"
+        unlock: "アンロックする"
+  comments:
+    comment:
+      delete_confirm: "コメントを削除する？"
+    form:
+      cancel: "キャンセル"
+      save_changes: "変更を保存する"
+  helpers:
+    comments:
+      deleted_entry: "削除された内容"
+  karminari:
+    campo:
+      paginator:
+        page: "第 %{page}ページ"
+  layouts:
+    admin:
+      admin: "%{name} 管理"
+      attachments: "添付ファイル"
+      categories: "カテゴリ"
+      comments: "コメント"
+      topics: "話題"
+      users: "ユーザ"
+    application:
+      comments: "コメント"
+      community: "コミュニティ"
+      likes: "好み"
+      logout: "ロッグアウト"
+      profile: "個人資料"
+      settings: "セッティング"
+      sign_in: "ログイン"
+      sign_up: "登録"
+      topics: "話題"
+  locales:
+    en: "英語"
+    zh-CN: "簡体字中国語"
+    zh-TW: "繁体字中国語"
+    ja-JP: "日本語"
+  markdown:
+    area:
+      attach_images_by: "写真追加"
+      preview: "プレビュー"
+      select_them: "ファイルを選択する"
+      write: "編集"
+  notification_mailer:
+    comment:
+      view_it_on_web: "ウェブ上に表示"
+    mention:
+      view_it_on_web: "ウェブ上に表示"
+  notifications:
+    index:
+      delete_all: "全て削除する"
+      delete_all_confirm: "お知らせを全て削除する？"
+      no_notifications: "お知らせなし"
+      notifications: "お知らせ"
+    notification:
+      comment:
+        commented_on: "コメントした"
+      mention:
+        mentioned_you_on: "あなたに言及"
+  passwords:
+    flashes:
+      successfully_update: "パスワードを更新できた"
+      token_invalid: "確認コードエラー"
+      user_email_not_found: "ユーザは存在しません"
+  sessions:
+    access_limiter:
+      are_you: "本人？"
+      forgot_password: "パスワードを忘れた？"
+      try_too_many_times: "多数を試した"
+    flashes:
+      incorrect_user_name_or_password: "ユーザ名またパスワードが間違える"
+    new:
+      forgot_password: "パスワードを忘れた？"
+      login: "アカウント名"
+      password: "パスワード"
+      sign_in: "ログイン"
+      username_or_email: "ユーザ名またはEメール"
+  settings:
+    accounts:
+      flashes:
+        successfully_updated: "アカウントを更新できた"
+      show:
+        account: "アカウント"
+        account_settings: "アカウントを設置する"
+        current_password: "現在のパスワード"
+        save_changes: "変更を保存した"
+    flashes:
+      incorrect_current_password: "パスワードが間違える"
+    notifications:
+      flashes:
+        successfully_updated: "更新できた"
+      show:
+        comment: "コメント"
+        email: Eメール
+        mention: "言及"
+        notifications: "お知らせ"
+        notifications_settings: "お知らせ設置"
+        save_changes: "変更を保存した"
+        web: "ウェブサイト"
+        when_receive_new_comment_on_watching_items: "新しい返事が来た"
+        when_someone_mention_you_with_username: "あなたに言及した"
+    passwords:
+      flashes:
+        successfully_updated: "パスワードを更新できた"
+      show:
+        current_password: "現在のパスワード"
+        password: "パスワードを設置する"
+        password_settings: "パスワード"
+        save_changes: "変更を保存する"
+    profiles:
+      flashes:
+        successfully_updated: "個人資料を更新できた"
+      show:
+        profile: "個人資料"
+        profile_settings: "個人資料を设置する"
+        save_changes: "変更を保存する"
+    sidebar:
+      account: "アカウント"
+      notifications: "お知らせ"
+      password: "パスワード"
+      profile: "個人資料"
+  share:
+    user_confirm_required:
+      change_email: "メールアドレスを編集する"
+      description: "全てのファンクションはアクセスできることを確認する。メールを %{email} まで送る。"
+      resend_email: "メールを再送する"
+  subscriptions:
+    subscription:
+      ignoring: "無視する"
+      not_watching: "アンフォーロ"
+      stop_ignoring: "無視を停止する"
+      unwatch: "アンフォーロ"
+      watch: "フォーロ"
+      watching: "フォーロ中"
+      you_do_not_receive_any_notifications: "お知らせなし"
+      you_only_receive_notifications_if_you_are_mentioned: "あなたに言及の時にお知らせする"
+      you_will_receive_notifications_for_all_comments: "新しいコメントの時にお知らせする"
+  topics:
+    edit:
+      edit_topic: "話題を編集する"
+    form:
+      cancel: "キャンセル"
+      create_topic: "話題を作成する"
+      no_category: "カテゴリーなし"
+      save_changes: "変更を保存する"
+      title: "テーマ"
+    index:
+      all_categories: "全てのカテゴリー"
+      create_topic: "話題を作成する"
+      hot: "人気"
+      hot_topics: "人気の話題"
+      newest: "最新"
+      newest_topics: "最新の話題"
+      no_topic_yet: "話題なし"
+    new:
+      new_topic: "新しい話題"
+    search:
+      no_matching_results: "結果は見つかりません"
+      search: "検索"
+    show:
+      add_this_comment: "コメントを追加する"
+      comments: "コメント"
+      delete_confirm: "話題を削除する？"
+      login: "ログイン"
+      no_comment_yet: "コメントはない"
+      no_more_topics: "それ以上の話題はない"
+      or: "若しくは"
+      related_topics: "関連した話題"
+      sign_up: "登録"
+      to_comment: "コメントする"
+      your_account_had_been_locked: "アカウントはロックされた"
+    topic:
+      comments_count: "新規コメントが%{count} "
+  user_mailer:
+    confirmation:
+      subject: "メール確認"
+      text_body: |
+         %{host} のメールでアカウントを登録する，本人じゃなければ無視してください。
+
+         以下のリンクでメールを確認してください：
+
+         %{url}
+    password_reset:
+      subject: "パスワードをリセットする"
+      text_body: |
+        パスワードをリセットのリクエストが %{host} から来ました，本人じゃなければメールを無視してください。
+
+        以下のリンクをクリックしてリセットを始まる：
+
+        %{url}
+  users:
+    comments:
+      index:
+        comments: "コメント"
+        likes: "お好み"
+        no_comment_yet: "コメントはない"
+        publish: "発行する"
+        user_s_comments: "%{name} のコメント"
+    confirmations:
+      confirm_success: "メールアドレスは確認できた"
+      create:
+        resend_success: "メールを再送できた"
+      limiter:
+        resend_limiter: "少々お待ちください"
+      new:
+        click_resend_button_to_resend_confirmation_email: "ブタンをクリックして確認メールを再送する"
+        need_confirm_email: "メールアドレスの確認が必要となる"
+      show:
+        confirm_fail: "確認できません"
+        confirmation_toke_invalid_or_expired_please_resend: "確認コードは無効になる，メールをもう一度送ってください。"
+    likes:
+      index:
+        no_comment_yet: "コメントはない"
+    new:
+      choose_a_password: "パスワードを選んでください"
+      create_account: "アカウントを作成する"
+      pick_a_username: "アカウント名を選んでください"
+      sign_up: "登録"
+      your_email: "メールアドレス"
+      your_full_name: "フルネーム"
+    passwords:
+      edit:
+        password_reset: "パスワードをリセットする"
+        save_changes: "変更を保存する"
+      new:
+        email: Email
+        password_reset: "パスワードをリセットする"
+        send_reset_email: "リセットメールを送る"
+        your_email: "メールアドレス"
+      show:
+        password_reset: "パスワードをリセットする"
+        password_reset_email_has_been_sent_message: "メールを送りました。ご確認ください"
+    profile:
+      edit_profile: "個人資料を編集する"
+    sidebar:
+      comments: "コメント"
+      topics: "話題"
+    topics:
+      index:
+        likes: "お好み"
+        no_topic_yet: "話題はない"
+        publish: "発行する"
+        topics: "話題"
+        user_s_topics: "%{name} の話題"
