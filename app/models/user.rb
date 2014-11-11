@@ -4,12 +4,14 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_secure_password
+  has_many :campnews, dependent: :destroy
   has_many :topics, dependent: :destroy
   has_many :campushares, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :delete_all
   has_many :likes, dependent: :delete_all
 
+  has_many :like_campnews, through: :likes, source: :likeable, source_type: 'Campnew'
   has_many :like_topics, through: :likes, source: :likeable, source_type: 'Topic'
   has_many :like_campushares, through: :likes, source: :likeable, source_type: 'Campushare'
   has_many :like_comments, through: :likes, source: :likeable, source_type: 'Comment'

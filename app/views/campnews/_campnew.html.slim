@@ -1,0 +1,16 @@
+- cache [campnew, locale] do
+  a.list-group-item.topic href=campnew_last_path(campnew)
+    .list-group-item-avatar
+      img.img-rounded alt="avatar" src=campnew.user.avatar.normal.url
+    .list-group-item-content
+      .list-group-item-heading
+        b = campnew.title
+      .text-muted
+        = campnew.user.name
+        = ' · '
+        = time_ago_tag campnew.created_at
+        - if campnew.category
+          = ' · '
+          = campnew.category.name
+        = ' · '
+        = t '.comments_count', count: campnew.comments_count

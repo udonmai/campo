@@ -16,7 +16,7 @@ class Admin::CampusharesController < Admin::ApplicationController
   def update
     if @topic.update_attributes params.require(:campushare).permit(:title, :category_id, :body)
       flash[:success] = I18n.t('admin.campushare.flashes.successfully_updated')
-      redirect_to admin_campushare_path_url(@topic)
+      redirect_to admin_campushare_path(@topic)
     else
       render :show
     end

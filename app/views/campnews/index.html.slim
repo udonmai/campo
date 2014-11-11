@@ -1,0 +1,105 @@
+- case params[:tab]
+- when 'hot'
+  - @page_title = t('.hot_topics')
+- when 'newest'
+  - @page_title = t('.newest_topics')
+
+- if @category
+  - @page_title += " #{@category.name}"
+
+.main
+  .container
+    .row
+    
+      .col-md-2.left-nav
+        .panel
+          - if login?
+            .panel-body
+              img.img-circle.img-avatar src=current_user.avatar.normal.url
+              '
+              = current_user.name
+              '
+            .panel-body
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=user_root_path(username: current_user.username)
+                  = t '.profile'
+              .list-group.list-group-campo.recordable.divider
+              .list-group.list-group-campo.recordable
+                = t '.likes'
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=likes_user_topics_path(username: current_user.username)
+                  = t '.topics'
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=likes_user_comments_path(username: current_user.username)
+                  = t '.comments'
+              .list-group.list-group-campo.recordable.divider
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=settings_account_path
+                  = t '.settings'
+              .list-group.list-group-campo.recordable.divider
+              .list-group.list-group-campo.recordable
+                a.list-group-item.topic href=logout_path data-method="delete"
+                  = t '.logout'
+          - else
+            li
+              a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                = t '.sign_up'
+            li
+              a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                = t '.sign_in'
+
+      .col-md-10
+        .col-md-9
+          .panel
+            .panel-heading.clearfix
+              - if login?
+                  div class=('active' if request.original_fullpath =~ /^\/notifications/)
+                    a.notifications-bell href=notifications_path
+                      i.fa.fa-bell-o
+                      - if unread_notifications_count > 0
+                        .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
+            .panel-heading.clearfix
+              .pull-right
+                ul.nav.nav-pills
+                  li class=('active' if params[:tab] == 'hot')
+                    a href=url_for(tab: 'hot')
+                      = t '.hot'
+                  li class=('active' if params[:tab] == 'newest')
+                    a href=url_for(tab: 'newest')
+                      = t '.newest'
+              h3.panel-title
+                = @category.try(:name) || t('.all_categories')
+
+            - if @category && @category.description.present?
+              .panel-body
+                = markdown_format @category.description
+
+            .panel-body
+              .list-group.list-group-campo.recordable
+                - if @topics.any?
+                  = render @topics
+                - else
+                  .list-group-item.text-center.text-muted.empty-message
+                    = t '.no_topic_yet'
+            - if @topics.total_pages > 1
+              .panel-footer.clearfix
+                .pull-right
+                  = paginate @topics, theme: 'campo'
+
+        .col-md-3
+          = render 'search_form'
+          - if admin_required
+            .panel
+              .panel-body
+                a.btn.btn-success.btn-block href=new_campnew_path(category_id: @category.try(:slug))
+                  = t '.create_topic'
+          .panel
+            .panel-body
+              ul.nav.nav-pills.nav-stacked
+                li class=('active' unless @category)
+                  a href=campnews_path
+                    = t '.all_categories'
+                - Category.order(topics_count: :desc).each do |category|
+                  li class=('active' if category == @category)
+                    a href=categoried_campnews_path(category_id: category.slug)
+                      = category.name

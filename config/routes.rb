@@ -39,6 +39,17 @@ Rails.application.routes.draw do
     resource :subscription, only: [:update, :destroy]
   end
 
+  resources :campnews, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
+    collection do
+      get 'categoried/:category_id', to: 'campnews#index', as: :categoried
+      get 'search'
+    end
+
+    member do
+      delete :trash
+    end
+  end
+
   resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
     collection do
       get 'categoried/:category_id', to: 'topics#index', as: :categoried
@@ -80,16 +91,24 @@ Rails.application.routes.draw do
   root 'topics#index'
 
   scope path: '~:username', module: 'users', as: 'user' do
+    resources :campnews, only: [:index] do
+      collection do
+        get :likes
+      end
+    end
+
     resources :topics, only: [:index] do
       collection do
         get :likes
       end
     end
+
     resources :campushares, only: [:index] do
       collection do
         get :likes
       end
     end
+
     resources :comments, only: [:index] do
       collection do
         get :likes
@@ -121,6 +140,17 @@ Rails.application.routes.draw do
     end
 
     resources :categories, except: [:edit]
+
+    resources :campnews, only: [:index, :show, :update] do
+      collection do
+        get :trashed
+      end
+
+      member do
+        delete :trash
+        patch :restore
+      end
+    end
 
     resources :topics, only: [:index, :show, :update] do
       collection do

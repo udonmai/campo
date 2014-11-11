@@ -8,8 +8,13 @@ zh-CN:
         slug: "标识"
         topics_count: "话题数"
         campushares_count: "话题数"
+        campnews_count: "话题数"
       comment:
         commentable: "评论对象"
+        created_at: "创建于"
+        user: "用户"
+      campnew:
+        comments_count: "评论数"
         created_at: "创建于"
         user: "用户"
       topic:
@@ -77,6 +82,21 @@ zh-CN:
     dashboard:
       show:
         dashboard: "控制台"
+    campnews:
+      flashes:
+        successfully_restored: "成功还原话题"
+        successfully_trashed: "成功删除话题"
+        successfully_updated: "成功更新话题"
+      index:
+        normal: "正常"
+        topics: "话题"
+        trashed: "回收站"
+      show:
+        delete: "删除"
+        delete_confirm: "你确定要删除次话题吗？"
+        no_category: "不分类"
+        restore: "还原"
+        save_changes: "保存修改"
     topics:
       flashes:
         successfully_restored: "成功还原话题"
@@ -261,6 +281,42 @@ zh-CN:
       you_do_not_receive_any_notifications: "你不会收到任何通知"
       you_only_receive_notifications_if_you_are_mentioned: "你只会在被提及的时候收到通知"
       you_will_receive_notifications_for_all_comments: "每当有新评论时你都会收到通知"
+  campnews:
+    edit:
+      edit_topic: "编辑话题"
+    form:
+      cancel: "取消"
+      create_topic: "创建话题"
+      no_category: "不分类"
+      save_changes: "保存修改"
+      title: "标题"
+    index:
+      all_categories: "所有分类"
+      create_topic: "创建话题"
+      hot: "热门"
+      hot_topics: "热门话题"
+      newest: "最新"
+      newest_topics: "最新话题"
+      no_topic_yet: "还没有话题"
+    new:
+      new_topic: "新话题"
+    search:
+      no_matching_results: "没有匹配结果"
+      search: "搜索"
+    show:
+      add_this_comment: "添加评论"
+      comments: "评论"
+      delete_confirm: "你确定要删除此话题吗？"
+      login: "登录"
+      no_comment_yet: "还没有评论"
+      no_more_topics: "没有更多话题"
+      or: "或"
+      related_topics: "相关话题"
+      sign_up: "注册"
+      to_comment: "后发表评论"
+      your_account_had_been_locked: "你的帐号已被锁定"
+    campnew:
+      comments_count: "%{count} 条评论"  
   topics:
     edit:
       edit_topic: "编辑话题"
@@ -397,6 +453,13 @@ zh-CN:
     sidebar:
       comments: "评论"
       topics: "话题"
+    campnew:
+      index:
+        likes: "收藏"
+        no_topic_yet: "还没有话题"
+        publish: "发布"
+        topics: "话题"
+        user_s_topics: "%{name} 的话题"
     topics:
       index:
         likes: "收藏"

@@ -62,6 +62,45 @@ ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
 
 
 --
+-- Name: campnews; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE campnews (
+    id integer NOT NULL,
+    user_id integer,
+    category_id integer,
+    title character varying(255),
+    body text,
+    hot double precision DEFAULT 0.0,
+    comments_count integer DEFAULT 0,
+    likes_count integer DEFAULT 0,
+    subscriptions_count integer DEFAULT 0,
+    trashed boolean DEFAULT false,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: campnews_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE campnews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: campnews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE campnews_id_seq OWNED BY campnews.id;
+
+
+--
 -- Name: campushares; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -113,7 +152,8 @@ CREATE TABLE categories (
     topics_count integer DEFAULT 0,
     campushares_count integer DEFAULT 0,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    campnews_count integer DEFAULT 0
 );
 
 
@@ -376,6 +416,13 @@ ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY campnews ALTER COLUMN id SET DEFAULT nextval('campnews_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY campushares ALTER COLUMN id SET DEFAULT nextval('campushares_id_seq'::regclass);
 
 
@@ -434,6 +481,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY attachments
     ADD CONSTRAINT attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: campnews_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY campnews
+    ADD CONSTRAINT campnews_pkey PRIMARY KEY (id);
 
 
 --
@@ -505,6 +560,27 @@ ALTER TABLE ONLY users
 --
 
 CREATE INDEX index_attachments_on_user_id ON attachments USING btree (user_id);
+
+
+--
+-- Name: index_campnews_on_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_campnews_on_category_id ON campnews USING btree (category_id);
+
+
+--
+-- Name: index_campnews_on_hot; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_campnews_on_hot ON campnews USING btree (hot);
+
+
+--
+-- Name: index_campnews_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_campnews_on_user_id ON campnews USING btree (user_id);
 
 
 --
@@ -670,7 +746,19 @@ INSERT INTO schema_migrations (version) VALUES ('20140412065000');
 
 INSERT INTO schema_migrations (version) VALUES ('20140412113810');
 
+INSERT INTO schema_migrations (version) VALUES ('20141110085031');
+
 INSERT INTO schema_migrations (version) VALUES ('20141110085032');
 
 INSERT INTO schema_migrations (version) VALUES ('20141110086034');
+
+INSERT INTO schema_migrations (version) VALUES ('20141111085033');
+
+INSERT INTO schema_migrations (version) VALUES ('20141111092444');
+
+INSERT INTO schema_migrations (version) VALUES ('20141111092445');
+
+INSERT INTO schema_migrations (version) VALUES ('201411110931111');
+
+INSERT INTO schema_migrations (version) VALUES ('201411110931112');
 
