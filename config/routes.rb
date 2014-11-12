@@ -128,6 +128,17 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
 
+    resources :systemessages, only: [:index, :show, :new, :create, :update] do
+      collection do
+        get :trashed
+      end
+
+      member do
+        delete :trash
+        patch :restore
+      end
+    end
+
     resources :users, only: [:index, :show, :update, :destroy] do
       collection do
         get :locked
@@ -141,7 +152,7 @@ Rails.application.routes.draw do
 
     resources :categories, except: [:edit]
 
-    resources :campnews, only: [:index, :show, :update] do
+    resources :campnews, only: [:index, :show, :new, :create, :update] do
       collection do
         get :trashed
       end

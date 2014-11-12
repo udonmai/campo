@@ -97,6 +97,25 @@ zh-CN:
         no_category: "不分类"
         restore: "还原"
         save_changes: "保存修改"
+      new:
+        create_campnew: "创建新闻"
+    systemessages:
+      flashes:
+        successfully_restored: "成功还原系统消息"
+        successfully_trashed: "成功删除系统消息"
+        successfully_updated: "成功更新系统消息"
+      index:
+        normal: "正常"
+        topics: "话题"
+        trashed: "回收站"
+      show:
+        delete: "删除"
+        delete_confirm: "你确定要删除此系统消息吗？"
+        no_category: "不分类"
+        restore: "还原"
+        save_changes: "保存修改"
+      new:
+        create_systemessage: "创建系统消息"
     topics:
       flashes:
         successfully_restored: "成功还原话题"
@@ -199,6 +218,8 @@ zh-CN:
       no_notifications: "没有通知"
       notifications: "通知"
     notification:
+      systemessage:
+        systemessaged_on: "发送了系统通知: "
       comment:
         commented_on: "评论了"
       mention:

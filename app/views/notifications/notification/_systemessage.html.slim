@@ -1,0 +1,17 @@
+- cache [notification, locale] do
+  - systemessage = notification.subject
+  li.list-group-item.notification id="notification_#{notification.id}" class=('read' if notification.read)
+    a.btn.list-group-item-remove href=notification_path(notification) data-remote="true" data-method="delete"
+      i.fa.fa-times
+
+    div.list-group-item-link href=''
+      .list-group-item-systemessage
+      .list-group-item-content
+        .list-group-item-heading
+          | 系统通知 -    
+          '
+          b = systemessage.title
+          '
+          = time_ago_tag systemessage.created_at
+        .text
+          = truncate systemessage.body, length: 670

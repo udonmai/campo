@@ -15,6 +15,15 @@
               = render 'share/flash_messages'
               .form-group
                 label.control-label.col-sm-3
+                  = t '.systemessage'
+                .col-sm-6
+                  label.checkbox-inline
+                    = f.check_box :send_systemessage_email
+                    = t '.email'
+                  .help-block
+                    = t '.when_receive_new_systemessage_on_watching_items'
+              .form-group
+                label.control-label.col-sm-3
                   = t '.comment'
                 .col-sm-6
                   label.checkbox-inline

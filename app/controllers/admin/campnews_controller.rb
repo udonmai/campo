@@ -13,6 +13,15 @@ class Admin::CampnewsController < Admin::ApplicationController
   def show
   end
 
+  def new
+    @category = Category.where('lower(slug) = ?', params[:category_id].downcase).first if params[:category_id].present?
+    @topic = Campnew.new category: @category
+  end
+
+  def create
+    @topic = current_user.campnews.create campnew_params
+  end
+
   def update
     if @topic.update_attributes params.require(:campnew).permit(:title, :category_id, :body)
       flash[:success] = I18n.t('admin.campnews.flashes.successfully_updated')
@@ -38,5 +47,9 @@ class Admin::CampnewsController < Admin::ApplicationController
 
   def find_topic
     @topic = Campnew.with_trashed.find params[:id]
+  end
+
+  def campnew_params
+    params.require(:campnew).permit(:title, :category_id, :body)
   end
 end

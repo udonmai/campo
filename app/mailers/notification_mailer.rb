@@ -3,6 +3,17 @@ class NotificationMailer < ActionMailer::Base
 
   helper :markdown, :comments
 
+  def systemessage(user_id, systemessage_id)
+    @user = User.find user_id
+    @systemessage = Systemessage.find systemessage_id
+    I18n.locale = @user.locale
+    headers(message_id: "#{SystemMessage}/@#{CONFIG['host']}",
+            in_reply_to: "#{SystemMessage}/@#{CONFIG['host']}")
+    mail(from: "#{Exchanger} <notification@#{CONFIG['host']}>",
+         to: @user.email,
+         subject: "#{@systemessage.title}")
+  end
+
   def mention(user_id, comment_id)
     @user = User.find user_id
     @comment = Comment.find comment_id

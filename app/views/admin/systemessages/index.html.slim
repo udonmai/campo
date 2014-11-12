@@ -1,12 +1,12 @@
-- @page_title = t '.campnews'
+- @page_title = t '.systemessages'
 
 .sub-navbar
   ul.nav.sub-navbar-nav
     li class=('active' if action_name == 'index')
-      a href=admin_campnews_path
+      a href=admin_systemessages_path
          = t '.normal'
     li class=('active' if action_name == 'trashed')
-      a href=trashed_admin_campnews_path
+      a href=trashed_admin_systemessages_path
          =t '.trashed'
 
 .main
@@ -17,23 +17,21 @@
       .col-md-8.col-md-push-2
         .panel
           .panel-body
-            a.btn.btn-success.btn-block href=new_admin_campnew_path(category_id: @category.try(:slug))
-              = t '.create_topic'
+            a.btn.btn-success.btn-block href=new_admin_systemessage_path(category_id: @category.try(:slug))
+              = t '.create_systemessage'
 
         .panel
           .panel-heading
             h2.panel-title
-              = t '.campnews'
+              = t '.systemessage'
           .panel-body
             .list-group.list-group-campo
               - @topics.each do |topic|
-                a.list-group-item href=admin_campnew_path(topic)
+                a.list-group-item href=admin_systemessage_path(topic)
                   .list-group-item-heading
                     = topic.id
                     = '. '
                     b = truncate topic.title
-                  .text-muted
-                    = topic.user.name
                     = ' · '
                     = time_ago_tag topic.created_at
                     /= ' · '

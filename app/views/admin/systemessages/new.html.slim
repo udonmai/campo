@@ -1,0 +1,42 @@
+- @page_title = @topic.title
+
+.main
+  .container
+    .row
+      .col-md-8.col-md-push-2
+        .panel
+          .panel-heading
+            h3.panel-title = t '.new_systemessages'
+          .panel-body
+            = form_for [:admin, @topic], remote: true, html: { class: 'topic-form' } do |f|
+              = render 'share/flash_messages'
+              = render 'share/form_error_messages', form: f
+              .row
+                .col-md-12
+                  .form-group
+                    = f.text_field :title, class: 'form-control', tabIndex: 1
+                .col-md-0
+              .form-group
+                = markdown_area f, :body, tabIndex: 3
+              .clearfix
+                = f.submit t('.create_systemessage'), class: 'btn btn-success', tabIndex: 4
+
+javascript:
+  $('form.topic-form').validate({
+    rules: {
+      'topic[title]': {
+        required: true
+      },
+      'topic[body]': {
+        required: true
+      }
+    },
+    messages: {
+      'topic[title]': {
+        required: '#{@topic.errors.generate_message :title, :blank}'
+      },
+      'topic[body]': {
+        required: '#{@topic.errors.generate_message :body, :blank}'
+      }
+    }
+  });

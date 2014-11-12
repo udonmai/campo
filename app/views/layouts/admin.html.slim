@@ -28,6 +28,9 @@ html
               i.fa.fa-bars
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
+            li class=('active' if controller_name == 'systemessages')
+              a href=admin_systemessages_path
+                = t '.systemessages'
             li class=('active' if controller_name == 'users')
               a href=admin_users_path
                 = t '.users'

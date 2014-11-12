@@ -324,6 +324,39 @@ ALTER SEQUENCE subscriptions_id_seq OWNED BY subscriptions.id;
 
 
 --
+-- Name: systemessages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE systemessages (
+    id integer NOT NULL,
+    title character varying(255),
+    body text,
+    trashed boolean DEFAULT false,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: systemessages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE systemessages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: systemessages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE systemessages_id_seq OWNED BY systemessages.id;
+
+
+--
 -- Name: topics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -382,7 +415,8 @@ CREATE TABLE users (
     send_comment_email boolean DEFAULT true,
     send_comment_web boolean DEFAULT true,
     send_mention_email boolean DEFAULT true,
-    send_mention_web boolean DEFAULT true
+    send_mention_web boolean DEFAULT true,
+    send_systemessage_email boolean DEFAULT true
 );
 
 
@@ -465,6 +499,13 @@ ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscription
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY systemessages ALTER COLUMN id SET DEFAULT nextval('systemessages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY topics ALTER COLUMN id SET DEFAULT nextval('topics_id_seq'::regclass);
 
 
@@ -537,6 +578,14 @@ ALTER TABLE ONLY notifications
 
 ALTER TABLE ONLY subscriptions
     ADD CONSTRAINT subscriptions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: systemessages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY systemessages
+    ADD CONSTRAINT systemessages_pkey PRIMARY KEY (id);
 
 
 --
@@ -761,4 +810,8 @@ INSERT INTO schema_migrations (version) VALUES ('20141111092445');
 INSERT INTO schema_migrations (version) VALUES ('201411110931111');
 
 INSERT INTO schema_migrations (version) VALUES ('201411110931112');
+
+INSERT INTO schema_migrations (version) VALUES ('201411110931113');
+
+INSERT INTO schema_migrations (version) VALUES ('201411110931114');
 
