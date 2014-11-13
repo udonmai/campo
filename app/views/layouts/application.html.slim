@@ -22,13 +22,30 @@ html
           a.navbar-brand href=root_path
             = CONFIG['title']
         ul.nav.navbar-nav.navbar-right
+          - if !login?
+            li
+              a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                = t '.sign_up'
+            li
+              a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                = t '.sign_in'
+          - else
+            li
+              a href=logout_path data-method="delete"
+                = t '.logout'
           
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li class=('active' if request.original_fullpath =~ /^\/topics/)
+            li class=('active' if (request.original_fullpath =~ /^\/$/) or (request.original_fullpath =~ /^\/topics/))
               a href=topics_path
                 = t '.community'
-
+            li class=('active' if request.original_fullpath =~ /^\/campushares/)
+              a href=campushares_path
+                = t '.campushares'
+            li class=('active' if request.original_fullpath =~ /^\/campnews/)
+              a href=campnews_path
+                = t '.campnews'
+            
     - if login? and !current_user.confirmed?
       = render 'share/user_confirm_required'
     = yield

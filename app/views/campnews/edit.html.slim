@@ -3,7 +3,10 @@
 .main
   .container
     .row
-      .col-md-9
+      .col-md-2.left-nav
+        = render 'share/main_side_bar'
+
+      .col-md-10
         .panel
           .panel-heading
             h3.panel-title = t '.edit_topic'

@@ -11,9 +11,10 @@
           .panel-heading.clearfix
             .pull-right
               ul.nav.nav-pills
-                li class=('active' if action_name == 'index')
-                  a href=user_campnews_path
-                    = t '.publish'
+                - if isadmin?
+                  li class=('active' if action_name == 'index')
+                    a href=user_campnews_path
+                      = t '.publish'
                 li class=('active' if action_name == 'likes')
                   a href=likes_user_campnews_path
                     = t '.likes'

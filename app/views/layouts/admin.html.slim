@@ -26,17 +26,19 @@ html
           li.navbar-toggle
             a.tiem type="button" data-toggle="collapse" data-target="#navbar"
               i.fa.fa-bars
-        #navbar.collapse.navbar-collapse
+        #navbar.collapse.navbar-collapse.black
           ul.nav.navbar-nav
             li class=('active' if controller_name == 'systemessages')
               a href=admin_systemessages_path
                 = t '.systemessages'
+            li.horizontal-divider
             li class=('active' if controller_name == 'users')
               a href=admin_users_path
                 = t '.users'
             li class=('active' if controller_name == 'categories')
               a href=admin_categories_path
                 = t '.categories'
+            li.horizontal-divider
             li class=('active' if controller_name == 'campnews')
               a href=admin_campnews_path
                 = t '.campnews'
@@ -46,6 +48,7 @@ html
             li class=('active' if controller_name == 'campushares')
               a href=admin_campushares_path
                 = t '.campushares'
+            li.horizontal-divider
             li class=('active' if controller_name == 'comments')
               a href=admin_comments_path
                 = t '.comments'

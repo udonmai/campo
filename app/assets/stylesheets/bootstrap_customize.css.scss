@@ -8,6 +8,7 @@ body {
   margin-bottom: 0;
 
   #navbar {
+    margin-top: 2px;
     background: white;
   }
   
@@ -18,6 +19,14 @@ body {
   &.navbar-inverse {
     background: #222;
 
+    .horizontal-divider {
+      height: 50px;
+      width: 3px;
+      background-color: #090909;
+      -moz-box-shadow: inset -1px 0px 0px rgba(90%,90%,90%,0.2);
+      -webkit-box-shadow: inset -1px 0px 0px rgba(90%,90%,90%,0.2);
+      box-shadow: inset -1px 0px 0px rgba(90%,90%,90%,0.2);
+    }
     .navbar-brand {
       color: $gray-lighter;
     }
@@ -78,7 +87,7 @@ body {
 
   .navbar-right {
     float: right;
-    margin-right: -15px;
+    /*margin-right: -15px;*/
 
     > li {
       float: left;
@@ -410,4 +419,8 @@ article {
 .middle-block-inner {
   display: table-cell;
   vertical-align: middle;
+}
+
+.black {
+  background-color: #222 !important;
 }

@@ -1,0 +1,46 @@
+.panel
+  - if login?
+    .panel-body
+      img.img-circle.img-avatar src=current_user.avatar.normal.url
+      '
+      | &nbsp
+      '
+      = current_user.name
+      '
+    div.list-group
+      .list-group-campo.recordable
+        a.list-group-item.topic href=user_root_path(username: current_user.username)
+          = t '.profile'
+      /.list-group.list-group-campo.recordable.divider
+      /.list-group.list-group-campo.recordable
+      .dropdown
+        .dropdown-toggle data-toggle="dropdown" href='#'
+          a.list-group-item.topic href='#'
+            = t '.likes'
+            |   
+            span.caret
+        ul.dropdown-menu.dropdown-menu-right
+          li.list-group-campo.recordable
+            a.list-group-item.topic href=likes_user_topics_path(username: current_user.username)
+              = t '.topics'
+          li.list-group-campo.recordable
+            a.list-group-item.topic href=likes_user_campushares_path(username: current_user.username)
+              = t '.campushares'
+          li.list-group-campo.recordable
+            a.list-group-item.topic href=likes_user_campnews_path(username: current_user.username)
+              = t '.campnews'
+          li.list-group-campo.recordable
+            a.list-group-item.topic href=likes_user_comments_path(username: current_user.username)
+              = t '.comments'
+      /.list-group.list-group-campo.recordable.divider
+      .list-group-campo.recordable
+        a.list-group-item.topic href=settings_account_path
+          = t '.settings'
+  - else
+    li
+      a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+        = t '.sign_up'
+    li
+      a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+        = t '.sign_in'
+

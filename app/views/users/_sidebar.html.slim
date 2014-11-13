@@ -3,6 +3,14 @@
     .pull-right
       i.fa.fa-chevron-right
     = t '.topics'
+  a.list-group-item class=('active' if controller_name == 'campushares') href=likes_user_campushares_path
+    .pull-right
+      i.fa.fa-chevron-right
+    = t '.campushares'
+  a.list-group-item class=('active' if controller_name == 'campnews') href=likes_user_campnews_path
+    .pull-right
+      i.fa.fa-chevron-right
+    = t '.campnews'
   a.list-group-item class=('active' if controller_name == 'comments') href=user_comments_path
     .pull-right
       i.fa.fa-chevron-right

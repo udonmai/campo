@@ -8,10 +8,10 @@
       .list-group-item-systemessage
       .list-group-item-content
         .list-group-item-heading
-          | 系统通知 -    
+          | 系统通知 -
           '
-          b = systemessage.title
+          b = systemessage_title(systemessage)
           '
-          = time_ago_tag systemessage.created_at
+          = systemessage_created_at(systemessage)
         .text
-          = truncate systemessage.body, length: 670
+          = systemessage_body(systemessage)
