@@ -12,7 +12,9 @@ $.validator.setDefaults
       error.insertAfter(element.closest('.markdown-area'))
     else if element.parent('.input-group').length
       error.insertAfter(element.parent())
-    else
+    else if element.next('.agree_rule').length
+      error.insertAfter('.agree_rule')
+    else 
       error.insertAfter(element)
 
 jQuery.validator.addMethod "format", ((value, element, param) ->

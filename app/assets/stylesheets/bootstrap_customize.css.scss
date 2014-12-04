@@ -424,3 +424,31 @@ article {
 .black {
   background-color: #222 !important;
 }
+
+.rule {
+  height: 333px;
+  overflow: auto;
+}
+
+.pind {
+  text-indent:30px;
+}
+
+.text-right {
+  text-align:right;
+}
+
+.text-middle {
+  text-align:center;
+}
+
+.clear {
+  clear:both;
+}
+
+.agree_rule {
+  line-height:1;
+  text-align:center;
+  padding: 5px 0 0 10px;
+  margin-bottom:0;
+}
