@@ -1,19 +1,19 @@
 default: &default
-  title: Campo
+  title: Exchanger
   host: localhost:3000
 
   mailer:
     # For localhost postfix
     smtp_settings:
       address: localhost
-      port: 25
+      port: 587
       enable_starttls_auto: false
       #domain:
       #user_name:
       #password:
       #authentication:
     default_options:
-      from: no-reply@exchanger.com
+      from: no-reply@miako.org
     default_url_options:
       host: localhost:3000
 
@@ -28,7 +28,7 @@ default: &default
 development:
   <<: *default
   admin_emails:
-    - admin@example.com
+    - udonmai@kyoto-u.ac.jp
 
 test:
   <<: *default
@@ -37,6 +37,5 @@ test:
 
 production:
   <<: *default
-
   admin_emails:
-    # - admin@example.com
+    - wen@db.soc.i.kyoto-u.ac.jp
