@@ -39,3 +39,4 @@ production:
   <<: *default
   admin_emails:
     - wen@db.soc.i.kyoto-u.ac.jp
+    - ruan@kuicr.kyoto-u.ac.jp
