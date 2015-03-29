@@ -7,6 +7,7 @@
 #= require jquery.timeago
 #= require nprogress
 #= require campo
+#= require_tree ./firechat
 #= require_tree ./plugins
 
 $(document).on 'page:update', ->

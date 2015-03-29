@@ -314,6 +314,11 @@ zh-CN:
       you_do_not_receive_any_notifications: "你不会收到任何通知"
       you_only_receive_notifications_if_you_are_mentioned: "你只会在被提及的时候收到通知"
       you_will_receive_notifications_for_all_comments: "每当有新评论时你都会收到通知"
+  squares:
+    index:
+      topics: "物物交换"
+      campushares: "校内分享"
+      campnews: "校内新闻"
   campnews:
     edit:
       edit_topic: "编辑校内新闻"

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :login?, :current_user, :isadmin?
 
-  before_action :set_locale, :email_confirmed_required
+  before_action :set_locale, :email_confirmed_required, :firebase_token_generator
 
   private
 
@@ -109,5 +109,13 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = current_user.try(:locale) || http_accept_language.compatible_language_from(I18n.available_locales) || I18n.default_locale
+  end
+
+  def firebase_token_generator
+    payload = {:uid => session[:user_id].to_s, :auth_data => "udonmai", :other_auth_data => "all_the_best"}
+    generator = Firebase::FirebaseTokenGenerator.new("9xGjJ4UGWxMnDv64r9DfgGb4Nxnx1kqelxG1alvM")
+    @fb_token = generator.create_token(payload)
+
+    print @fb_token
   end
 end

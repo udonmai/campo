@@ -314,6 +314,11 @@ ja-JP:
       you_do_not_receive_any_notifications: "お知らせなし"
       you_only_receive_notifications_if_you_are_mentioned: "あなたに言及の時にお知らせする"
       you_will_receive_notifications_for_all_comments: "新しいコメントの時にお知らせする"
+  squares:
+    index:
+      topics: "物々交換"
+      campushares: "キャンパスシェア"
+      campnews: "キャンパスニュース"
   campnews:
     edit:
       edit_topic: "キャンパスニュースを編集する"

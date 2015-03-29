@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   post 'markdown/preview', to: 'markdown#preview'
 
+  root 'squares#index'
+
   resources :users, only: [:create] do
     collection do
       get :check_email
@@ -37,6 +39,17 @@ Rails.application.routes.draw do
 
   concern :subscribable do
     resource :subscription, only: [:update, :destroy]
+  end
+
+  resources :squares, only: [:index], concerns: [:commentable, :likeable, :subscribable] do
+    collection do
+      get 'categoried/:category_id', to: 'squares#index', as: :categoried
+      get 'search'
+    end
+
+    member do
+      delete :trash
+    end
   end
 
   resources :campnews, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
@@ -87,8 +100,6 @@ Rails.application.routes.draw do
   end
 
   resources :attachments, only: [:create]
-
-  root 'topics#index'
 
   scope path: '~:username', module: 'users', as: 'user' do
     resources :campnews, only: [:index] do

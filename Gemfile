@@ -81,6 +81,9 @@ gem 'hiredis', '~> 0.4.5'
 gem 'resque', '~> 1.25.1'
 gem 'resque_mailer', '~> 2.2.6'
 
+# firebase
+gem 'firebase_token_generator'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
   gem 'spring'

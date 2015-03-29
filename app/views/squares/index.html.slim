@@ -1,0 +1,86 @@
+.main
+  .container
+    .row
+
+      .col-md-2
+        = render 'share/main_side_bar'
+
+      .col-md-10
+        .panel
+          .panel-heading.clearfix.bottom-blank
+            - if login?
+                div class=('active' if request.original_fullpath =~ /^\/notifications/)
+                  a.notifications-bell href=notifications_path
+                    i.fa.fa-bell-o
+                    - if unread_notifications_count > 0
+                      .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
+
+          .blank-line
+
+          .panel-heading.clearfix
+            h3.panel-title
+              = t '.topics'
+
+          - if @category && @category.description.present?
+            .panel-body
+              = markdown_format @category.description
+
+          .panel-body
+            .list-group.list-group-campo.recordable
+              - if @topics.any?
+                = render @topics
+              - else
+                .list-group-item.text-center.text-muted.empty-message
+                  = t '.no_topic_yet'
+          - if @topics.total_pages > 1
+           .panel-body
+             .list-group.list-group-campo.recordable
+                a.list-group-item.more href=topics_path
+                  | more
+
+          .blank-line
+
+          .panel-heading.clearfix
+            h3.panel-title
+              = t '.campushares'
+
+          - if @category && @category.description.present?
+            .panel-body
+              = markdown_format @category.description
+
+          .panel-body.bottom-blank
+            .list-group.list-group-campo.recordable
+              - if @shares.any?
+                = render @shares
+              - else
+                .list-group-item.text-center.text-muted.empty-message
+                  = t '.no_topic_yet'
+          - if @shares.total_pages > 1
+            .panel-body
+             .list-group.list-group-campo.recordable
+                a.list-group-item.more href=campushares_path
+                  | more
+
+          .blank-line
+
+          .panel-heading.clearfix
+            h3.panel-title
+              = t '.campnews'
+
+          - if @category && @category.description.present?
+            .panel-body
+              = markdown_format @category.description
+
+          .panel-body.bottom-blank
+            .list-group.list-group-campo.recordable
+              - if @news.any?
+                = render @news
+              - else
+                .list-group-item.text-center.text-muted.empty-message
+                  = t '.no_topic_yet'
+          - if @news.total_pages > 1
+            .panel-body
+              .list-group.list-group-campo.recordable
+                a.list-group-item.more href=campnews_path
+                  | more
+

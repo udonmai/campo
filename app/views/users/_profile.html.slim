@@ -8,6 +8,10 @@
       span.text-muted = "@#{user.username}"
     .user-profile-bio
       = simple_format user.bio
+    - if user != current_user
+      .user_chat
+        button.btn.btn-primary.btn-lg.btn-block
+          | Message
 
   - if login? and user == current_user
     .panel-footer.clearfix

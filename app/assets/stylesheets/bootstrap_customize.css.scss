@@ -1,5 +1,9 @@
 body {
   background: #eee;
+
+  .display-none {
+    display: none;
+  }
 }
 
 .navbar {
@@ -252,6 +256,15 @@ body {
     padding: 10px 15px;
     border-top: 1px solid #eee;
     background: transparent;
+  }
+
+  .blank-line {
+    height: 20px;
+    background-color: #EEEEEE;
+  }
+
+  .more {
+    text-align: center;
   }
 }
 

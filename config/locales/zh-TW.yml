@@ -241,6 +241,11 @@ zh-TW:
       you_do_not_receive_any_notifications: "你不會收到任何通知"
       you_only_receive_notifications_if_you_are_mentioned: "你只會在被提及的時候收到通知"
       you_will_receive_notifications_for_all_comments: "每當有新評論時你都會收到通知"
+  squares:
+    index:
+      topics: "物物交換"
+      campushares: "校內分享"
+      campnews: "校內新聞"
   topics:
     edit:
       edit_topic: "編輯話題"

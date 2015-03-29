@@ -248,6 +248,11 @@ en:
         if you are mentioned
       you_will_receive_notifications_for_all_comments: You will receive notifications
         for all comments
+  squares:
+    index:
+      topics: Exchanges
+      campushares: Shares
+      campnews: News
   topics:
     edit:
       edit_topic: Edit topic
