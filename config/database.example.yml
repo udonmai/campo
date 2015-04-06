@@ -55,3 +55,4 @@ test:
 production:
   <<: *default
   database: campo_production
+  username: root
