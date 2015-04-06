@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
 
   def email_confirmed_required
     if login? and !current_user.confirmed?
-      #redirect_to new_users_confirmation_path(return_to: (request.fullpath if request.get?))
-      logout
-      redirect_to login_path(return_to: (request.fullpath if request.get?))
+      redirect_to new_users_confirmation_path(return_to: (request.fullpath if request.get?))
+      #logout
+      #redirect_to login_path(return_to: (request.fullpath if request.get?))
     end
   end
 
